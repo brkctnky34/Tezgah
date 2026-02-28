@@ -121,7 +121,7 @@ function buildRequest(userId: number): { error?: string; request?: ListingReques
 bot.command('start', async (ctx) => {
   await ctx.reply(
     [
-      'Listing Wizard Bot\'a hosgeldiniz!',
+      'Tezgah\u0131n\u0131za hosgeldiniz!',
       '',
       '/new - Yeni ilan oturumu baslat',
       '/platform <trendyol|hepsiburada|etsy|generic> - Platform sec',
