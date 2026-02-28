@@ -1,0 +1,117 @@
+LISTING WIZARD - PROJE OZETI
+============================
+Hazirlanma Tarihi: 28 Subat 2026
+
+
+BU PROJE NE ISE YARAR?
+-----------------------
+Listing Wizard, Telegram uzerinden calisan bir yapay zeka botudur.
+Amaci: Sattginiz urunun fotografini ve kisa aciklamasini gonderin,
+bot size pazaryerleri (Trendyol, Hepsiburada, Etsy) icin
+profesyonel, SEO uyumlu ilan metni uretsin.
+
+Ornek: Bir sandalye fotografi + "ceviz agaci, el yapimi" yazarsiniz,
+bot size baslik, madde isaretleri, aciklama, anahtar kelimeler
+ve etiketler uretir. Bunu kopyalayip ilan olarak yapistirirsiniz.
+
+
+NASIL CALISIR? (BASIT ANLATIM)
+-------------------------------
+1. Telegram'dan bota urun fotografi gonderirsiniz
+2. Kisa bir not yazarsiniz (urunun ozellikleri)
+3. Hangi pazaryeri oldugunu secersiniz (trendyol, hepsiburada, etsy)
+4. /run yazarsiniz
+5. Bot yapay zekaya sorar, gelen cevabi size gosterir
+
+Arka planda iki parca calisir:
+- API (sunucu): Yapay zekayla konusur, ilan metnini uretir
+- Bot: Telegram'daki mesajlari alir, API'ye gonderir, cevabi gosterir
+
+
+YAPILAN CALISMALAR
+------------------
+
+1. KOD KONTROLU VE DUZELTME
+   - Tum proje dosyalari incelendi
+   - TypeScript derleme hatalari kontrol edildi (hatasiz)
+   - Guvenlik aciklari taranarak kapatildi
+
+2. PERFORMANS IYILESTIRMELERI
+   - Oturum suresi 1 saatten 15 dakikaya dusuruldu (gereksiz bellek kullanimi onlendi)
+   - Gorsel isleme servisi icin ustsel geri cekilme eklendi (sunucu yogunsa
+     bekleyip tekrar dener, her seferinde biraz daha uzun bekler)
+   - Hiz sinirlamasi eklendi (botun kotuye kullanilmasini onler)
+
+3. TURKCE ARAYUZ
+   - Botun tum mesajlari Turkce yazildi
+   - Emoji ve ozel karakterlerle okunakli format
+   - Uretilen ilan sonuclari duzgun HTML formatiyla gosteriliyor
+
+4. SEO (ARAMA MOTORU OPTIMIZASYONU) GUCLENDIRME
+   - Her pazaryeri icin ozel SEO kurallari yazildi:
+     * Trendyol: 60-80 karakter baslik, 5 madde, Turkce anahtar kelimeler
+     * Hepsiburada: 80-120 karakter baslik, 6 madde, teknik detay agirlikli
+     * Etsy: 100-140 karakter baslik, hikaye anlatimi, 13 etiket
+   - Yapay zeka sistemi "SEO uzmani" olarak tanimlanarak daha kaliteli cikti uretmesi saglandi
+   - Anahtar kelime stratejisi: hem genel hem uzun kuyruk kelimeler uretiliyor
+     (ornek: "vazo" + "el yapimi seramik vazo salon dekor")
+
+5. TEST ALTYAPISI
+   - 5 otomatik test yazildi, hepsi basarili geciyor
+   - Mock mod (sahte veri) ile gercek mod ayri ayri test edilebiliyor
+
+6. DOKUMANTASYON
+   - README.md Turkce olarak yeniden yazildi
+   - Mimari sema, ortam degiskenleri tablosu ve kurulum adimlari eklendi
+
+
+TEKNIK BILGILER (GELISTIRICILER ICIN)
+--------------------------------------
+Dil: TypeScript (Node.js)
+Yapi: Monorepo (apps/api + apps/bot)
+Yapay Zeka: OpenRouter API (GPT-4o-mini modeli)
+Gorsel Isleme: Replicate API (opsiyonel, token gerektirir)
+Bot: grammy kutuphanesi (Telegram Bot API)
+Sunucu: Express.js
+Test: Vitest
+Paketleme: Docker Compose
+
+
+CALISTIRMAK ICIN GEREKEN ANAHTARLAR
+------------------------------------
+- TELEGRAM_BOT_TOKEN: Telegram'dan @BotFather ile alinir
+- OPENROUTER_API_KEY: openrouter.ai adresinden ucretsiz alinir
+- REPLICATE_API_TOKEN: (opsiyonel) Gorsel aciklama icin, replicate.com'dan alinir
+
+Bu anahtarlar .env dosyasina yazilir. Anahtarlar olmadan bot
+"mock mod"da calisir ve sahte veri dondurur.
+
+
+MEVCUT DURUM
+------------
+- API sunucusu: Calisiyor, gercek SEO ilan uretimi test edildi ve basarili
+- Telegram botu: Calisir durumda (makinede yeterli RAM gerektirir)
+- Testler: 5/5 basarili
+- SEO kalitesi: Trendyol TR testi yapildi, baslik/aciklama/anahtar kelimeler uretiyor
+
+
+ORNEK CIKTI (GERCEK YAPAY ZEKA URETIMI)
+----------------------------------------
+Girdi: "El yapimi ahsap sandalye, ceviz agaci, modern tasarim, salon icin"
+Platform: Trendyol | Dil: Turkce
+
+Baslik: El Yapimi Ahsap Sandalye - Ceviz Agac, Modern Tasarim
+
+Maddeler:
+  * Dayanikli ceviz agaci malzemesi ile uzun omurlu kullanim saglar
+  * Modern tasarimi ile her mekana siklik katar
+  * Dogal vernik ile kaplanmis, saglikli ve cevre dostudur
+  * Rahat oturum alani ile konforlu bir deneyim sunar
+  * Salon, ofis veya yemek odasi icin ideal bir secimdir
+
+Anahtar Kelimeler: el yapimi ahsap sandalye, ceviz agaci sandalye,
+  modern tasarim sandalye, dogal vernikli sandalye, sik oturma alani,
+  salon icin sandalye, ofis sandalyesi, yemek odasi sandalyesi
+
+Etiketler: el_yapimi, ahsap_sandalye, ceviz_agaci, modern_tasarim,
+  salon_dekorasyonu

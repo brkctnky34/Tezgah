@@ -1,0 +1,26 @@
+{
+  "name": "listing-wizard-mvp",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspace @apps/api",
+    "dev:api": "npm run dev --workspace @apps/api",
+    "dev:bot": "npm run dev --workspace @apps/bot"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "esbuild": "^0.27.3"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc -p apps/api/tsconfig.json --noEmit)",
+      "Bash(npx tsc -p apps/bot/tsconfig.json --noEmit)",
+      "Bash(npm test)",
+      "Bash(docker --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx vitest run --config apps/api/vitest.config.ts --root apps/api test/listing.mock.test.ts)",
+      "Bash(npx vitest run)",
+      "Bash(pkill -9 -f vitest)",
+      "Bash(pkill -9 -f tsx)",
+      "Bash(pkill -9 -f \"node.*listing\")",
+      "Bash(API_KEY=test MOCK_MODE=true npx vitest run --pool threads)",
+      "Bash(npm install)",
+      "Bash(node -e \"const {execSync} = require\\(''child_process''\\); console.log\\(execSync\\(''npx vitest run test/sanity.test.ts'', {timeout: 20000, encoding: ''utf8''}\\)\\);\")",
+      "Bash(node -e \"const {execSync} = require\\(''child_process''\\); console.log\\(execSync\\(''npx vitest run test/listing.mock.test.ts'', {timeout: 30000, encoding: ''utf8''}\\)\\);\")",
+      "Bash(pkill -f \"vitest\")",
+      "Bash(API_KEY=test MOCK_MODE=true npx tsx -e \"const { createApp } = require\\(''./src/app''\\); console.log\\(''OK'', typeof createApp\\);\")",
+      "Bash(pkill -f \"tsx\")",
+      "Bash(API_KEY=test npx tsx -e \"console.log\\(''1-start''\\); const z = require\\(''zod''\\); console.log\\(''2-zod ok''\\); const express = require\\(''express''\\); console.log\\(''3-express ok''\\);\")",
+      "Bash(pkill -f \"node -e\")",
+      "Bash(npm cache clean --force)",
+      "Bash(npm install --cache /tmp/npm-cache-fix)",
+      "Bash(node -e \"const express = require\\(''express''\\); console.log\\(''express OK'', typeof express\\);\")",
+      "Bash(npx vitest run --reporter verbose)",
+      "Bash(npm install esbuild --cache /tmp/npm-cache-fix)",
+      "Bash(curl -s http://localhost:3000/health)",
+      "Bash(npx tsx --env-file=.env apps/api/src/index.ts)",
+      "Bash(node -e \"require\\(''express''\\); console.log\\(''OK''\\)\")",
+      "Bash(node -e \"require\\(''express''\\); console.log\\(''express OK''\\)\")",
+      "Bash(pgrep -f \"tsx.*index.ts\")",
+      "Bash(lsof -i :3000)",
+      "Bash(pkill -f \"tsx.*index.ts\")",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''/Users/burakcetinkaya/Desktop/untitled folder/node_modules/esbuild/package.json'',''utf8''\\)\\); console.log\\(''valid JSON''\\)\")",
+      "Bash(npm rebuild esbuild)"
+    ]
+  }
+}
