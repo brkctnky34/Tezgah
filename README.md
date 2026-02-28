@@ -186,3 +186,4 @@ npm test
 - `apps/api/src/services/replicate.ts` - Gorsel islemleri
 - `apps/bot/src/index.ts` - Telegram bot komutlari
 - `apps/bot/src/session/store.ts` - In-memory session yonetimi
+# Tezgah
