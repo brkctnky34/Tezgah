@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { issues } from "@/data/issues";
+import { posts } from "@/data/posts";
 
 const BASE_URL = "https://kasparhauser.com"; // kendi domain'inizle değiştirin
 
@@ -10,12 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
-    },
-    {
-      url: `${BASE_URL}/sayilar`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
     },
     {
       url: `${BASE_URL}/hakkinda`,
@@ -31,12 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const issuePages: MetadataRoute.Sitemap = issues.map((issue) => ({
-    url: `${BASE_URL}/sayilar/${issue.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const postPages: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${BASE_URL}/metin/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "never" as const,
     priority: 0.8,
   }));
 
-  return [...staticPages, ...issuePages];
+  return [...staticPages, ...postPages];
 }

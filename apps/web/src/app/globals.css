@@ -162,6 +162,23 @@
   }
 }
 
+/* Grid gap trick — 1px background shows through as grid lines */
+.grid-lines {
+  background-color: #131313;
+}
+
+.grid-lines > * {
+  background-color: #080808;
+}
+
+/* line-clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
