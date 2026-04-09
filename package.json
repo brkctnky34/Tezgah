@@ -11,7 +11,9 @@
     "dev:api": "npm run dev --workspace @apps/api",
     "dev:bot": "npm run dev --workspace @apps/bot",
     "dev:web": "npm run dev --workspace @apps/web",
-    "build:web": "npm run build --workspace @apps/web"
+    "build:web": "npm run build --workspace @apps/web",
+    "dev:studio": "npm run dev --workspace @apps/studio",
+    "build:studio": "npm run build --workspace @apps/studio"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
