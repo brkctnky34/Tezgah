@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas: "Bebas Neue", Impact, sans-serif;
+  --font-eb-garamond: "EB Garamond", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    background-color: #080808;
+    color: #d4d4d4;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-eb-garamond);
+    font-size: 18px;
+    line-height: 1.7;
+    background-color: #080808;
+    color: #d4d4d4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #c8001e;
+    color: #f0f0f0;
+  }
+}
+
+@layer components {
+  .kh-logo {
+    font-family: var(--font-bebas);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+  }
+
+  .kh-logo .white-part {
+    color: #f0f0f0;
+  }
+
+  .kh-logo .red-part {
+    color: #c8001e;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #1e1e1e;
+  }
+
+  .article-type {
+    font-family: var(--font-inter);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c8001e;
+  }
+
+  .meta-text {
+    font-family: var(--font-inter);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555555;
+  }
+
+  .nav-link {
+    font-family: var(--font-inter);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #f0f0f0;
+  }
+
+  .nav-link.active {
+    color: #f0f0f0;
+  }
+
+  .section-label {
+    font-family: var(--font-inter);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 1px;
+    background-color: #c8001e;
+  }
+
+  .prose-kh {
+    font-family: var(--font-eb-garamond);
+    color: #c0c0c0;
+    line-height: 1.8;
+  }
+
+  .prose-kh p {
+    margin-bottom: 1.5rem;
+    font-size: 19px;
+  }
+
+  .prose-kh p:first-child::first-letter {
+    float: left;
+    font-family: var(--font-bebas);
+    font-size: 5.5rem;
+    line-height: 0.75;
+    padding-right: 0.12em;
+    color: #c8001e;
+  }
+}
+
+@layer utilities {
+  .text-red-kh {
+    color: #c8001e;
+  }
+
+  .border-red-kh {
+    border-color: #c8001e;
+  }
+
+  .bg-surface {
+    background-color: #111111;
+  }
+
+  .text-heading {
+    color: #f0f0f0;
+  }
+
+  .text-body {
+    color: #d4d4d4;
+  }
+
+  .text-muted {
+    color: #555555;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c8001e;
+}
