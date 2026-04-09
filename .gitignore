@@ -6,3 +6,5 @@ npm-debug.log*
 dist
 coverage
 .DS_Store
+.next/
+next-env.d.ts
