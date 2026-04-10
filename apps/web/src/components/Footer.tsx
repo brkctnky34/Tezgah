@@ -34,7 +34,7 @@ export default function Footer() {
         <hr className="divider my-8" />
 
         <p className="meta-text text-center">
-          © 2024 Kaspar Hauser · 6:45 yayınları
+          © {new Date().getFullYear()} Kaspar Hauser · 6:45 yayınları
         </p>
       </div>
     </footer>
