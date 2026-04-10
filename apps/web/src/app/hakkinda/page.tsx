@@ -1,59 +1,81 @@
 import type { Metadata } from "next";
-import Logo from "@/components/Logo";
 import { hakkindaMetni as h } from "@/data/hakkinda";
 
 export const metadata: Metadata = {
   title: "Hakkında",
   description:
-    "Kaspar Hauser ve 6:45 yayınları hakkında. Bağımsız bir edebiyat ve kültür dergisi.",
+    "Kaspar Hauser ve 6:45 yayınları hakkında. Bağımsız bir edebiyat ve kültür platformu.",
 };
 
 export default function HakkindaPage() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
+    <div className="max-w-5xl mx-auto px-6 py-16">
       {/* Header */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 border-b border-[#1e1e1e] pb-16">
-        <div>
-          <Logo size="lg" />
-        </div>
-        <div className="flex flex-col justify-end">
-          <p
-            className="text-2xl text-heading leading-relaxed"
-            style={{
-              fontFamily: "var(--font-eb-garamond)",
-              fontStyle: "italic",
-            }}
-          >
-            {h.acisCumlesi}
-          </p>
-        </div>
+      <div
+        className="border-b pb-14 mb-14"
+        style={{ borderColor: "var(--border)" }}
+      >
+        <div
+          className="mb-8 mx-auto"
+          style={{
+            width: "40px",
+            height: "2px",
+            backgroundColor: "var(--accent)",
+          }}
+        />
+        <h1
+          className="text-center uppercase mb-8"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2rem, 5vw, 3rem)",
+            fontWeight: 300,
+            letterSpacing: "0.25em",
+            color: "var(--text)",
+          }}
+        >
+          Hakkında
+        </h1>
+
+        <p
+          className="text-center max-w-xl mx-auto"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "20px",
+            fontStyle: "italic",
+            lineHeight: 1.7,
+            color: "var(--text-secondary)",
+          }}
+        >
+          {h.acisCumlesi}
+        </p>
       </div>
 
       {/* Content */}
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-16 max-w-3xl mx-auto">
         {/* Sidebar */}
-        <div>
-          <div className="sticky top-24 space-y-8">
-            {Object.entries(h.bilgiler).map(([key, val]) => {
-              const labels: Record<string, string> = {
-                yayinevi: "Yayınevi",
-                kurulus: "Kuruluş",
-                dil: "Dil",
-                format: "Format",
-              };
-              return (
-                <div key={key}>
-                  <p className="article-type mb-2">{labels[key] ?? key}</p>
-                  <p
-                    className="text-heading"
-                    style={{ fontFamily: "var(--font-inter)", fontSize: "14px" }}
-                  >
-                    {val}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+        <div className="space-y-6">
+          {Object.entries(h.bilgiler).map(([key, val]) => {
+            const labels: Record<string, string> = {
+              yayinevi: "Yayınevi",
+              kurulus: "Kuruluş",
+              dil: "Dil",
+              format: "Format",
+            };
+            return (
+              <div key={key}>
+                <p className="type-label mb-1">{labels[key] ?? key}</p>
+                <p
+                  style={{
+                    fontFamily: "var(--font-ui)",
+                    fontSize: "13px",
+                    color: "var(--text)",
+                  }}
+                >
+                  {val}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         {/* Main text */}
@@ -66,30 +88,42 @@ export default function HakkindaPage() {
 
       {/* Previous publications */}
       {h.oncekiYayinlar.length > 0 && (
-        <div className="mt-20 pt-12 border-t border-[#1e1e1e]">
-          <p className="section-label mb-8">Önceki Yayınlar</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {h.oncekiYayinlar.map((yayin) => (
-              <div key={yayin.isim} className="border border-[#1e1e1e] p-8">
-                <p className="article-type mb-4">{yayin.yillar}</p>
-                <h3
-                  className="text-heading text-3xl mb-4"
-                  style={{
-                    fontFamily: "var(--font-eb-garamond)",
-                    fontStyle: "italic",
-                  }}
-                >
-                  {yayin.isim}
-                </h3>
-                <p
-                  className="text-[#666] text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-inter)" }}
-                >
-                  {yayin.aciklama}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div
+          className="mt-20 pt-12 border-t max-w-3xl mx-auto"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <p className="section-title mb-8">Önceki Yayınlar</p>
+          {h.oncekiYayinlar.map((yayin) => (
+            <div
+              key={yayin.isim}
+              className="border p-8"
+              style={{ borderColor: "var(--border)" }}
+            >
+              <p className="type-label mb-3">{yayin.yillar}</p>
+              <h3
+                className="mb-3"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "24px",
+                  fontWeight: 400,
+                  fontStyle: "italic",
+                  color: "var(--text)",
+                }}
+              >
+                {yayin.isim}
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-ui)",
+                  fontSize: "14px",
+                  lineHeight: 1.7,
+                  color: "var(--text-secondary)",
+                }}
+              >
+                {yayin.aciklama}
+              </p>
+            </div>
+          ))}
         </div>
       )}
     </div>

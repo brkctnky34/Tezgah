@@ -14,17 +14,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(params.slug);
   if (!post) return {};
-  return {
-    title: post.title,
-    description: post.excerpt,
-  };
+  return { title: post.title, description: post.excerpt };
 }
 
 export default function MetinPage({ params }: Props) {
   const post = getPost(params.slug);
   if (!post) notFound();
 
-  const idx = posts.findIndex((p) => p.slug === params.slug);
   const sorted = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
@@ -36,41 +32,50 @@ export default function MetinPage({ params }: Props) {
 
   return (
     <div>
-      {/* ── ARTICLE HEADER ── */}
-      <header className="border-b border-[#1c1c1c]">
-        <div className="max-w-3xl mx-auto px-6 pt-14 pb-10">
+      {/* ── HEADER ── */}
+      <header
+        className="border-b"
+        style={{ borderColor: "var(--border)" }}
+      >
+        <div className="max-w-2xl mx-auto px-6 pt-12 pb-10">
           <Link
             href="/"
-            className="meta-text hover:text-[#c8001e] transition-colors mb-8 inline-block"
+            className="nav-link mb-8 inline-block hover:text-[var(--accent)]"
           >
-            ← Geri
+            ← Ana Sayfa
           </Link>
 
-          <div className="flex items-center gap-4 mb-6">
-            <span className="article-type">{typeLabels[post.type]}</span>
-            <span className="text-[#222] text-xs">·</span>
+          <div className="mt-6 mb-6">
+            <span className="type-label">{typeLabels[post.type]}</span>
             <span
-              className="text-[#444] text-xs tracking-wider"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="mx-3"
+              style={{ color: "var(--border)", fontSize: "11px" }}
             >
-              {formatDate(post.date)}
+              ·
             </span>
+            <span className="meta-text">{formatDate(post.date)}</span>
           </div>
 
           <h1
-            className="text-heading leading-tight mb-6"
+            className="mb-6"
             style={{
-              fontFamily: "var(--font-eb-garamond)",
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              fontWeight: 500,
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              fontWeight: 400,
+              lineHeight: 1.2,
+              color: "var(--text)",
             }}
           >
             {post.title}
           </h1>
 
           <p
-            className="text-[#555] text-sm tracking-wider uppercase"
-            style={{ fontFamily: "var(--font-inter)" }}
+            style={{
+              fontFamily: "var(--font-ui)",
+              fontSize: "13px",
+              letterSpacing: "0.06em",
+              color: "var(--text-secondary)",
+            }}
           >
             {post.author}
           </p>
@@ -78,21 +83,24 @@ export default function MetinPage({ params }: Props) {
       </header>
 
       {/* ── BODY ── */}
-      <article className="max-w-3xl mx-auto px-6 py-14">
+      <article className="max-w-2xl mx-auto px-6 py-14">
         {isPoem ? (
-          // Şiir: satır boşlukları korunur, drop cap yok
           <div
-            className="text-[#c0c0c0] text-xl leading-loose"
-            style={{ fontFamily: "var(--font-eb-garamond)", fontStyle: "italic" }}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "20px",
+              fontStyle: "italic",
+              lineHeight: 2,
+              color: "var(--text)",
+            }}
           >
             {post.body.map((stanza, i) => (
-              <div key={i} className="mb-8 whitespace-pre-line">
+              <div key={i} className="mb-10 whitespace-pre-line">
                 {stanza}
               </div>
             ))}
           </div>
         ) : (
-          // Diğer: prose stili, drop cap
           <div className="prose-kh">
             {post.body.map((para, i) => (
               <p key={i}>{para}</p>
@@ -102,58 +110,63 @@ export default function MetinPage({ params }: Props) {
       </article>
 
       {/* ── DIVIDER ── */}
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="flex items-center gap-4">
-          <span className="flex-1 h-px bg-[#1c1c1c]" />
-          <span
-            className="kh-logo text-lg"
-            style={{ color: "#1e1e1e" }}
-          >
-            <span style={{ color: "#1e1e1e" }}>KAS</span>
-            <span style={{ color: "#c8001e", opacity: 0.3 }}>HAU</span>
-          </span>
-          <span className="flex-1 h-px bg-[#1c1c1c]" />
+      <div className="max-w-2xl mx-auto px-6">
+        <div className="flex items-center justify-center">
+          <div
+            className="mx-auto"
+            style={{
+              width: "40px",
+              height: "2px",
+              backgroundColor: "var(--accent)",
+            }}
+          />
         </div>
       </div>
 
       {/* ── PREV / NEXT ── */}
-      <nav className="max-w-3xl mx-auto px-6 py-12">
+      <nav
+        className="max-w-2xl mx-auto px-6 py-12 border-t mt-10"
+        style={{ borderColor: "var(--border)" }}
+      >
         <div className="grid grid-cols-2 gap-8">
           {prev ? (
-            <Link href={`/metin/${prev.slug}`} className="group">
+            <Link href={`/metin/${prev.slug}`} className="group no-underline">
               <p className="meta-text mb-2">← Önceki</p>
               <p
-                className="text-[#555] text-base leading-snug group-hover:text-heading transition-colors"
-                style={{ fontFamily: "var(--font-eb-garamond)" }}
+                className="leading-snug group-hover:text-[var(--accent)] transition-colors"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  color: "var(--text)",
+                }}
               >
                 {prev.title}
               </p>
-              <p
-                className="text-[#333] text-xs mt-1"
-                style={{ fontFamily: "var(--font-inter)" }}
-              >
-                {prev.author}
-              </p>
+              <p className="meta-text mt-1">{prev.author}</p>
             </Link>
           ) : (
             <div />
           )}
 
           {next ? (
-            <Link href={`/metin/${next.slug}`} className="group text-right">
+            <Link
+              href={`/metin/${next.slug}`}
+              className="group text-right no-underline"
+            >
               <p className="meta-text mb-2">Sonraki →</p>
               <p
-                className="text-[#555] text-base leading-snug group-hover:text-heading transition-colors"
-                style={{ fontFamily: "var(--font-eb-garamond)" }}
+                className="leading-snug group-hover:text-[var(--accent)] transition-colors"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  color: "var(--text)",
+                }}
               >
                 {next.title}
               </p>
-              <p
-                className="text-[#333] text-xs mt-1"
-                style={{ fontFamily: "var(--font-inter)" }}
-              >
-                {next.author}
-              </p>
+              <p className="meta-text mt-1">{next.author}</p>
             </Link>
           ) : (
             <div />

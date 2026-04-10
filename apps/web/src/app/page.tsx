@@ -8,63 +8,71 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* ── SITE HEADER STRIP ── */}
-      <section className="border-b border-[#1c1c1c] py-10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <h1
-                className="kh-logo"
-                style={{ fontSize: "clamp(4rem, 10vw, 8rem)", lineHeight: 0.88 }}
-              >
-                <span className="block white-part">KAS</span>
-                <span className="block white-part">PAR</span>
-                <span className="block red-part">HAU</span>
-                <span className="block red-part">SER</span>
-              </h1>
-            </div>
+      {/* ── MASTHEAD ── */}
+      <section
+        className="border-b py-16 md:py-20"
+        style={{ borderColor: "var(--border)" }}
+      >
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          {/* Accent line */}
+          <div
+            className="mx-auto mb-8"
+            style={{
+              width: "40px",
+              height: "2px",
+              backgroundColor: "var(--accent)",
+            }}
+          />
 
-            <div className="md:max-w-xs pb-1">
-              <p
-                className="text-[#444] text-sm leading-relaxed"
-                style={{ fontFamily: "var(--font-inter)" }}
-              >
-                6:45 yayınları tarafından sürekli yayınlanan bağımsız bir
-                edebiyat platformu. Şiir, deneme, hikaye, söyleşi.
-              </p>
-            </div>
-          </div>
+          {/* Magazine title */}
+          <h1
+            className="uppercase"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2.5rem, 6vw, 4rem)",
+              fontWeight: 300,
+              letterSpacing: "0.25em",
+              lineHeight: 1.1,
+              color: "var(--text)",
+            }}
+          >
+            Kaspar Hauser
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            className="mt-4"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "17px",
+              fontStyle: "italic",
+              color: "var(--text-muted)",
+            }}
+          >
+            Bağımsız edebiyat ve kültür platformu
+          </p>
+
+          <p
+            className="mt-2"
+            style={{
+              fontFamily: "var(--font-ui)",
+              fontSize: "10px",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "var(--text-muted)",
+            }}
+          >
+            6:45 yayınları
+          </p>
         </div>
       </section>
 
-      {/* ── GRID ── */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex items-center justify-between mb-8">
-          <p className="section-label">Tüm Metinler</p>
-          <p
-            className="text-[#2e2e2e] text-xs tracking-widest uppercase"
-            style={{ fontFamily: "var(--font-inter)" }}
-          >
-            {sorted.length} metin
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#131313]">
-          {sorted.map((post, i) => (
-            <PostCard key={post.slug} post={post} index={i} />
+      {/* ── CONTENT GRID ── */}
+      <section className="max-w-5xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sorted.map((post) => (
+            <PostCard key={post.slug} post={post} />
           ))}
-        </div>
-      </section>
-
-      {/* ── BOTTOM STRIP ── */}
-      <section className="border-t border-[#1c1c1c] bg-[#c8001e]">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-center">
-          <p
-            className="text-white text-xs tracking-[0.35em] uppercase"
-            style={{ fontFamily: "var(--font-inter)" }}
-          >
-            6:45 yayınları · altıkırkbeş · Kaspar Hauser
-          </p>
         </div>
       </section>
     </div>

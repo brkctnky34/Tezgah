@@ -1,33 +1,50 @@
 import Link from "next/link";
 
-interface LogoProps {
-  size?: "sm" | "md" | "lg" | "xl";
-  className?: string;
-}
-
-const sizes = {
-  sm: "text-3xl",
-  md: "text-5xl",
-  lg: "text-8xl",
-  xl: "text-[10rem]",
-};
-
-export default function Logo({ size = "md", className = "" }: LogoProps) {
+export default function Logo({ className = "" }: { className?: string }) {
   return (
-    <Link href="/" className={`kh-logo block ${sizes[size]} ${className}`}>
-      <span className="block white-part">KAS</span>
-      <span className="block white-part">PAR</span>
-      <span className="block red-part">HAU</span>
-      <span className="block red-part">SER</span>
+    <Link href="/" className={`block no-underline ${className}`}>
+      <span
+        className="block tracking-[0.15em] uppercase"
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "18px",
+          fontWeight: 600,
+          letterSpacing: "0.2em",
+          color: "var(--text)",
+        }}
+      >
+        Kaspar Hauser
+      </span>
+      <span
+        className="block"
+        style={{
+          fontFamily: "var(--font-ui)",
+          fontSize: "9px",
+          letterSpacing: "0.15em",
+          textTransform: "uppercase",
+          color: "var(--text-muted)",
+          marginTop: "2px",
+        }}
+      >
+        6:45 yayınları
+      </span>
     </Link>
   );
 }
 
 export function LogoInline({ className = "" }: { className?: string }) {
   return (
-    <Link href="/" className={`kh-logo text-2xl leading-none ${className}`}>
-      <span className="white-part">KASPAR</span>
-      <span className="red-part"> HAUSER</span>
+    <Link
+      href="/"
+      className={`no-underline tracking-[0.2em] uppercase ${className}`}
+      style={{
+        fontFamily: "var(--font-display)",
+        fontSize: "15px",
+        fontWeight: 600,
+        color: "var(--text)",
+      }}
+    >
+      Kaspar Hauser
     </Link>
   );
 }
