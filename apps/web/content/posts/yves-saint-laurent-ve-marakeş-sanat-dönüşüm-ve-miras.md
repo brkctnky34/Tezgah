@@ -3,6 +3,7 @@ title: "Yves Saint Laurent ve Marakeş: Sanat, Dönüşüm ve Miras"
 author: Can Korur
 type: deneme
 date: 2026-04-10
+image: /images/uploads/marakes.jpg
 excerpt: miras.
 ---
 
