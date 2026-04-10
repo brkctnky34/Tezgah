@@ -6,6 +6,7 @@ import { getAllPosts } from "@/lib/posts";
 interface Settings {
   altyazi: string;
   yayinevi: string;
+  instagram: string;
 }
 
 function getSettings(): Settings {
@@ -58,6 +59,45 @@ export default function HomePage() {
             <PostCard key={post.slug} post={post} />
           ))}
         </div>
+      </section>
+
+      {/* ── INSTAGRAM ── */}
+      <section className="border-t" style={{ borderColor: "var(--border)" }}>
+        <a
+          href={`https://instagram.com/${settings.instagram}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block max-w-5xl mx-auto px-6 py-8"
+          style={{ textDecoration: "none" }}
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-6">
+              <span className="type-label">Instagram</span>
+              <span
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "17px",
+                  fontStyle: "italic",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                @{settings.instagram}
+              </span>
+            </div>
+            <span
+              className="shrink-0 transition-transform group-hover:translate-x-1"
+              style={{
+                fontFamily: "var(--font-ui)",
+                fontSize: "11px",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--text-muted)",
+              }}
+            >
+              instagram.com →
+            </span>
+          </div>
+        </a>
       </section>
 
       {/* ── DÜKKAN ── */}
