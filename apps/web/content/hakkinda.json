@@ -1,23 +1,13 @@
 {
-  "acisCumlesi": "Kaspar Hauser kimdir? Nereden geldiğini bilmiyordu. Adından başkasını bilmiyordu. Ve bu belirsizlik onu sonsuz kıldı.",
+  "acisCumlesi": "Hiç kimse nereye gittiğini bilmeyen biri kadar yükseğe çıkamaz!",
   "paragraflar": [
-    "Kaspar Hauser, 6:45 yayınları bünyesinde çıkarılan bağımsız bir edebiyat ve kültür dergisidir. Her sayı, tek bir sorudan yola çıkar. O soru; şiirle, denemeyle, hikayeyle, söyleşiyle derinleştirilir. Cevap aramak için değil — soruyu daha uzak bir yere taşımak için.",
-    "Kaspar Hauser, 19. yüzyılda Almanya'da ortaya çıkan gizemli bir çocuktu. Nereden geldiğini bilmiyordu. Kendi adından başka hiçbir şeyi yoktu. Bu belirsizlik onu bir sembol hâline getirdi: Kimliğin kökenlerini araştıran, hafızanın sınırlarını zorlayan, izlerin peşinden giden bir figür.",
-    "Dergi bu ismi bir çağrışım olarak taşıyor. Kim olduğumuzu, nereden geldiğimizi, hangi hikâyelerin bizi var ettiğini sormak için bir zemin açıyor. Bu zemin; edebiyat, felsefe, görsel sanat ve müzikle örülü.",
-    "6:45 yayınları, 2024 yılında kurulmuş bağımsız bir yayın kolektifidir. Kaspar Hauser onun ilk periyodik yayınıdır. Öncesinde, yayınevinin çıkardığı Underground Poetixi dergisiyle edebiyat dünyasına adım atıldı.",
-    "Her sayı sınırlı sayıda çıkar. Her metin yayın kurulunun değerlendirmesiyle yayımlanır. Ticari kaygıdan uzak, okuyucu odaklı bir yayın anlayışı benimsenir."
+    "Kadıköy'ün yağmurlu ve puslu sokaklarında hazırlanan her bir metin sizi uçurumdan aşağı atabilecek güce sahip olabilir. Herhangi bir şekilde ve özellikle izinsiz olarak iktibas edildiğinde Kadıköy'ün o bilinen, serin ve rutubetli laneti, yıllar boyunca bunu yapanı takip eder, saçları dökülür, rüyasında sürekli olarak Kadıköy sokaklarından akın akın geçerek yıllık intiharlarını gerçekleştirmeye giden lemur sürüleri görür ve derin bir yalnızlığa gömülür."
   ],
   "bilgiler": {
     "yayinevi": "6:45 yayınları",
-    "kurulus": "2024",
+    "kurulus": "1989",
     "dil": "Türkçe",
     "format": "Dijital · Periyodik"
   },
-  "oncekiYayinlar": [
-    {
-      "yillar": "2022 — 2024",
-      "isim": "Underground Poetixi",
-      "aciklama": "6:45 yayınlarının ilk dergisi. Yeraltı edebiyatının kenarlarında gezinen, şiire ve denemelere odaklanan bağımsız bir yayın."
-    }
-  ]
+  "oncekiYayinlar": []
 }
