@@ -2,8 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import fs from "fs";
+import path from "path";
 
 const BASE_URL = "https://kasparhauser.xyz";
+
+function getDescription(): string {
+  try {
+    const filePath = path.join(process.cwd(), "content", "settings.json");
+    const settings = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    return settings.description || "Kaspar Hauser — 6:45 yayınları";
+  } catch {
+    return "Kaspar Hauser — 6:45 yayınları";
+  }
+}
+
+const description = getDescription();
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -11,8 +25,7 @@ export const metadata: Metadata = {
     default: "Kaspar Hauser — 6:45 yayınları",
     template: "%s — Kaspar Hauser",
   },
-  description:
-    "Kaspar Hauser, 6:45 yayınları tarafından çıkarılan bağımsız bir edebiyat ve kültür platformudur.",
+  description,
   keywords: [
     "edebiyat",
     "kültür",
@@ -24,7 +37,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Kaspar Hauser — 6:45 yayınları",
-    description: "Bağımsız edebiyat ve kültür platformu.",
+    description,
     type: "website",
     locale: "tr_TR",
     siteName: "Kaspar Hauser",
@@ -32,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Kaspar Hauser — 6:45 yayınları",
-    description: "Bağımsız edebiyat ve kültür platformu.",
+    description,
   },
   alternates: { canonical: BASE_URL },
 };
