@@ -19,6 +19,7 @@ collections:
     folder: apps/web/content/posts
     create: true
     slug: "{{slug}}"
+    slug_length: 60
     preview_path: "metin/{{slug}}"
     summary: "{{title}} — {{author}}"
     sortable_fields: ["date", "title", "author"]
