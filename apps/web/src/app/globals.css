@@ -133,6 +133,37 @@
   }
 }
 
+/* ── POEM ── */
+.poem-body p {
+  margin-bottom: 2rem;
+  white-space: pre-line;
+}
+
+.poem-body br {
+  display: block;
+  content: "";
+  margin-top: 0;
+}
+
+/* ── PROSE from markdown ── */
+.prose-kh p {
+  margin-bottom: 1.6rem;
+  font-size: clamp(17px, 2.5vw, 19px);
+}
+
+/* ── MOBILE READING ── */
+@media (max-width: 640px) {
+  .prose-kh p {
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  .poem-body {
+    font-size: 18px !important;
+    line-height: 1.9 !important;
+  }
+}
+
 /* ── LINE CLAMP ── */
 .line-clamp-3 {
   display: -webkit-box;

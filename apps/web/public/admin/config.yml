@@ -1,0 +1,96 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'içerik: "{{title}}" yayınlandı'
+    update: 'içerik: "{{title}}" güncellendi'
+    delete: 'içerik: "{{title}}" silindi'
+    uploadMedia: "medya: {{path}} yüklendi"
+    deleteMedia: "medya: {{path}} silindi"
+
+locale: tr
+media_folder: apps/web/public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: posts
+    label: Metinler
+    label_singular: Metin
+    folder: apps/web/content/posts
+    create: true
+    slug: "{{slug}}"
+    preview_path: "metin/{{slug}}"
+    summary: "{{title}} — {{author}}"
+    sortable_fields: ["date", "title", "author"]
+    fields:
+      - label: Başlık
+        name: title
+        widget: string
+        hint: Metnin başlığı
+
+      - label: Yazar
+        name: author
+        widget: string
+
+      - label: Tür
+        name: type
+        widget: select
+        options:
+          - { label: Deneme, value: deneme }
+          - { label: Şiir, value: siir }
+          - { label: Hikaye, value: hikaye }
+          - { label: Söyleşi, value: soylesi }
+          - { label: Çeviri, value: ceviri }
+
+      - label: Yayın Tarihi
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        default: ""
+
+      - label: Kapak Görseli
+        name: image
+        widget: image
+        required: false
+        hint: "Opsiyonel — kart ve sayfa başlığında görünür"
+
+      - label: Kısa Özet
+        name: excerpt
+        widget: text
+        hint: "Kart üzerinde görünecek özet (2-3 cümle)"
+
+      - label: İçerik
+        name: body
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+          - link
+          - heading-two
+          - heading-three
+          - quote
+          - bulleted-list
+          - numbered-list
+        editor_components: []
+
+  - name: settings
+    label: Site Ayarları
+    files:
+      - name: general
+        label: Genel
+        file: apps/web/content/settings.json
+        fields:
+          - label: Site Açıklaması
+            name: description
+            widget: text
+          - label: İletişim E-postası
+            name: contactEmail
+            widget: string
+          - label: Yazı Gönderimi E-postası
+            name: submissionEmail
+            widget: string
+          - label: Instagram
+            name: instagram
+            widget: string
