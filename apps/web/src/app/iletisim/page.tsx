@@ -1,25 +1,35 @@
 import type { Metadata } from "next";
+import fs from "fs";
+import path from "path";
 
 export const metadata: Metadata = {
   title: "İletişim",
   description: "Kaspar Hauser dergisi ile iletişime geçin.",
 };
 
+interface IletisimData {
+  acisCumlesi: string;
+  iletisimEmail: string;
+  yaziEmail: string;
+  instagram: string;
+  kurallar: string[];
+}
+
+function getIletisimData(): IletisimData {
+  const filePath = path.join(process.cwd(), "content", "iletisim.json");
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
 export default function IletisimPage() {
+  const d = getIletisimData();
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       {/* Header */}
-      <div
-        className="border-b pb-14 mb-14"
-        style={{ borderColor: "var(--border)" }}
-      >
+      <div className="border-b pb-14 mb-14" style={{ borderColor: "var(--border)" }}>
         <div
           className="mb-8 mx-auto"
-          style={{
-            width: "40px",
-            height: "2px",
-            backgroundColor: "var(--accent)",
-          }}
+          style={{ width: "40px", height: "2px", backgroundColor: "var(--accent)" }}
         />
         <h1
           className="text-center uppercase mb-4"
@@ -42,8 +52,7 @@ export default function IletisimPage() {
             color: "var(--text-muted)",
           }}
         >
-          Yazı göndermek, iş birliği teklif etmek ya da merhaba demek için
-          bize yazın.
+          {d.acisCumlesi}
         </p>
       </div>
 
@@ -52,76 +61,44 @@ export default function IletisimPage() {
         <div className="space-y-8">
           <div>
             <p className="type-label mb-2">Genel İletişim</p>
-            <p
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "17px",
-                color: "var(--text)",
-              }}
+            <a
+              href={`mailto:${d.iletisimEmail}`}
+              style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "var(--text)", textDecoration: "none" }}
             >
-              kasparhauser@645yayinlari.com
-            </p>
+              {d.iletisimEmail}
+            </a>
           </div>
 
           <div>
             <p className="type-label mb-2">Yazı Gönderimi</p>
-            <p
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "17px",
-                color: "var(--text)",
-              }}
+            <a
+              href={`mailto:${d.yaziEmail}`}
+              style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "var(--text)", textDecoration: "none" }}
             >
-              yazi@645yayinlari.com
-            </p>
+              {d.yaziEmail}
+            </a>
           </div>
 
           <div>
             <p className="type-label mb-2">Instagram</p>
-            <p
-              style={{
-                fontFamily: "var(--font-ui)",
-                fontSize: "14px",
-                color: "var(--text)",
-              }}
-            >
-              @645kasparhauser
+            <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", color: "var(--text)" }}>
+              @{d.instagram}
             </p>
           </div>
         </div>
 
         {/* Submission rules */}
-        <div
-          className="border p-8"
-          style={{ borderColor: "var(--border)" }}
-        >
+        <div className="border p-8" style={{ borderColor: "var(--border)" }}>
           <p className="type-label mb-6">Yazı Gönderimi Kuralları</p>
-
           <ul className="space-y-4">
-            {[
-              "Metinler Türkçe olmalıdır. Çeviri teklifleri ayrıca değerlendirilir.",
-              "Şiir için uzunluk sınırı yoktur. Deneme ve hikaye için 3.000 kelime öneriyoruz.",
-              "Başka bir yerde yayımlanmış metinleri değerlendirmiyoruz.",
-              "Her dönemin temasını önceden duyuruyoruz. Temaya uygun metinler önceliklidir.",
-              "Yanıt süresi maksimum altı haftadır.",
-            ].map((rule, i) => (
+            {d.kurallar.map((kural, i) => (
               <li
                 key={i}
                 className="flex gap-3"
-                style={{
-                  fontFamily: "var(--font-ui)",
-                  fontSize: "13px",
-                  lineHeight: 1.7,
-                  color: "var(--text-secondary)",
-                }}
+                style={{ fontFamily: "var(--font-ui)", fontSize: "13px", lineHeight: 1.7, color: "var(--text-secondary)" }}
               >
-                <span
-                  className="shrink-0 mt-0.5"
-                  style={{ color: "var(--accent)" }}
-                >
-                  —
-                </span>
-                <span>{rule}</span>
+                <span className="shrink-0 mt-0.5" style={{ color: "var(--accent)" }}>—</span>
+                <span>{kural}</span>
               </li>
             ))}
           </ul>

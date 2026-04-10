@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { hakkindaMetni as h } from "@/data/hakkinda";
+import fs from "fs";
+import path from "path";
 
 export const metadata: Metadata = {
   title: "Hakkında",
@@ -7,21 +8,28 @@ export const metadata: Metadata = {
     "Kaspar Hauser ve 6:45 yayınları hakkında. Bağımsız bir edebiyat ve kültür platformu.",
 };
 
+interface HakkindaData {
+  acisCumlesi: string;
+  paragraflar: string[];
+  bilgiler: { yayinevi: string; kurulus: string; dil: string; format: string };
+  oncekiYayinlar: { yillar: string; isim: string; aciklama: string }[];
+}
+
+function getHakkindaData(): HakkindaData {
+  const filePath = path.join(process.cwd(), "content", "hakkinda.json");
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
 export default function HakkindaPage() {
+  const h = getHakkindaData();
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       {/* Header */}
-      <div
-        className="border-b pb-14 mb-14"
-        style={{ borderColor: "var(--border)" }}
-      >
+      <div className="border-b pb-14 mb-14" style={{ borderColor: "var(--border)" }}>
         <div
           className="mb-8 mx-auto"
-          style={{
-            width: "40px",
-            height: "2px",
-            backgroundColor: "var(--accent)",
-          }}
+          style={{ width: "40px", height: "2px", backgroundColor: "var(--accent)" }}
         />
         <h1
           className="text-center uppercase mb-8"
@@ -35,7 +43,6 @@ export default function HakkindaPage() {
         >
           Hakkında
         </h1>
-
         <p
           className="text-center max-w-xl mx-auto"
           style={{
@@ -64,13 +71,7 @@ export default function HakkindaPage() {
             return (
               <div key={key}>
                 <p className="type-label mb-1">{labels[key] ?? key}</p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-ui)",
-                    fontSize: "13px",
-                    color: "var(--text)",
-                  }}
-                >
+                <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "var(--text)" }}>
                   {val}
                 </p>
               </div>
@@ -88,17 +89,10 @@ export default function HakkindaPage() {
 
       {/* Previous publications */}
       {h.oncekiYayinlar.length > 0 && (
-        <div
-          className="mt-20 pt-12 border-t max-w-3xl mx-auto"
-          style={{ borderColor: "var(--border)" }}
-        >
+        <div className="mt-20 pt-12 border-t max-w-3xl mx-auto" style={{ borderColor: "var(--border)" }}>
           <p className="section-title mb-8">Önceki Yayınlar</p>
           {h.oncekiYayinlar.map((yayin) => (
-            <div
-              key={yayin.isim}
-              className="border p-8"
-              style={{ borderColor: "var(--border)" }}
-            >
+            <div key={yayin.isim} className="border p-8" style={{ borderColor: "var(--border)" }}>
               <p className="type-label mb-3">{yayin.yillar}</p>
               <h3
                 className="mb-3"
@@ -112,14 +106,7 @@ export default function HakkindaPage() {
               >
                 {yayin.isim}
               </h3>
-              <p
-                style={{
-                  fontFamily: "var(--font-ui)",
-                  fontSize: "14px",
-                  lineHeight: 1.7,
-                  color: "var(--text-secondary)",
-                }}
-              >
+              <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", lineHeight: 1.7, color: "var(--text-secondary)" }}>
                 {yayin.aciklama}
               </p>
             </div>

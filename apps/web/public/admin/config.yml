@@ -13,6 +13,7 @@ media_folder: apps/web/public/images/uploads
 public_folder: /images/uploads
 
 collections:
+  # ── METİNLER ──────────────────────────────────────────────
   - name: posts
     label: Metinler
     label_singular: Metin
@@ -21,13 +22,12 @@ collections:
     slug: "{{slug}}"
     slug_length: 60
     preview_path: "metin/{{slug}}"
-    summary: "{{title}} — {{author}}"
-    sortable_fields: ["date", "title", "author"]
+    summary: "{{title}} — {{author}} ({{date}})"
+    sortable_fields: ["date", "title", "author", "type"]
     fields:
       - label: Başlık
         name: title
         widget: string
-        hint: Metnin başlığı
 
       - label: Yazar
         name: author
@@ -49,7 +49,6 @@ collections:
         format: "YYYY-MM-DD"
         date_format: "DD.MM.YYYY"
         time_format: false
-        default: ""
 
       - label: Kapak Görseli
         name: image
@@ -76,22 +75,97 @@ collections:
           - numbered-list
         editor_components: []
 
-  - name: settings
-    label: Site Ayarları
+  # ── SAYFALAR ──────────────────────────────────────────────
+  - name: pages
+    label: Sayfalar
     files:
-      - name: general
-        label: Genel
+      # Hakkında
+      - name: hakkinda
+        label: Hakkında Sayfası
+        file: apps/web/content/hakkinda.json
+        fields:
+          - label: Açılış Cümlesi
+            name: acisCumlesi
+            widget: text
+            hint: "Sayfanın üstünde italik görünen cümle"
+
+          - label: Ana Paragraflar
+            name: paragraflar
+            widget: list
+            label_singular: Paragraf
+            hint: "Her satır ayrı bir paragraf olarak görünür"
+            field:
+              label: Paragraf
+              name: paragraf
+              widget: text
+
+          - label: Yan Panel Bilgileri
+            name: bilgiler
+            widget: object
+            fields:
+              - { label: Yayınevi, name: yayinevi, widget: string }
+              - { label: Kuruluş Yılı, name: kurulus, widget: string }
+              - { label: Dil, name: dil, widget: string }
+              - { label: Format, name: format, widget: string }
+
+          - label: Önceki Yayınlar
+            name: oncekiYayinlar
+            widget: list
+            label_singular: Yayın
+            fields:
+              - { label: Yıllar, name: yillar, widget: string, hint: "örn: 2022 — 2024" }
+              - { label: İsim, name: isim, widget: string }
+              - { label: Açıklama, name: aciklama, widget: text }
+
+      # İletişim
+      - name: iletisim
+        label: İletişim Sayfası
+        file: apps/web/content/iletisim.json
+        fields:
+          - label: Açılış Cümlesi
+            name: acisCumlesi
+            widget: text
+
+          - label: Genel İletişim E-postası
+            name: iletisimEmail
+            widget: string
+
+          - label: Yazı Gönderimi E-postası
+            name: yaziEmail
+            widget: string
+
+          - label: Instagram Kullanıcı Adı
+            name: instagram
+            widget: string
+            hint: "@ işareti olmadan yazın"
+
+          - label: Yazı Gönderimi Kuralları
+            name: kurallar
+            widget: list
+            label_singular: Kural
+            field:
+              label: Kural
+              name: kural
+              widget: text
+
+      # Site Ayarları
+      - name: site
+        label: Site Ayarları
         file: apps/web/content/settings.json
         fields:
           - label: Site Açıklaması
             name: description
             widget: text
-          - label: İletişim E-postası
+            hint: "Arama motorlarında görünür"
+
+          - label: Genel İletişim E-postası
             name: contactEmail
             widget: string
+
           - label: Yazı Gönderimi E-postası
             name: submissionEmail
             widget: string
-          - label: Instagram
+
+          - label: Instagram Kullanıcı Adı
             name: instagram
             widget: string
