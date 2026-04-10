@@ -1,8 +1,21 @@
+import fs from "fs";
+import path from "path";
 import PostCard from "@/components/PostCard";
 import { getAllPosts } from "@/lib/posts";
 
+interface Settings {
+  altyazi: string;
+  yayinevi: string;
+}
+
+function getSettings(): Settings {
+  const filePath = path.join(process.cwd(), "content", "settings.json");
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
 export default function HomePage() {
   const posts = getAllPosts();
+  const settings = getSettings();
 
   return (
     <div>
@@ -24,10 +37,10 @@ export default function HomePage() {
             Kaspar Hauser
           </h1>
           <p className="mt-4" style={{ fontFamily: "var(--font-body)", fontSize: "17px", fontStyle: "italic", color: "var(--text-muted)" }}>
-            Bağımsız edebiyat ve kültür platformu
+            {settings.altyazi}
           </p>
           <p className="mt-2" style={{ fontFamily: "var(--font-ui)", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--text-muted)" }}>
-            6:45 yayınları
+            {settings.yayinevi}
           </p>
         </div>
       </section>

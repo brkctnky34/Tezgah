@@ -153,6 +153,16 @@ collections:
         label: Site Ayarları
         file: apps/web/content/settings.json
         fields:
+          - label: Ana Sayfa Altyazısı
+            name: altyazi
+            widget: string
+            hint: "KASPAR HAUSER başlığının altındaki italik metin"
+
+          - label: Yayınevi Adı
+            name: yayinevi
+            widget: string
+            hint: "Altyazının altındaki küçük metin"
+
           - label: Site Açıklaması
             name: description
             widget: text
