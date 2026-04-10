@@ -3,6 +3,7 @@ title: Dün Oldu Bile
 author: Veysel Oğulcan
 type: siir
 date: 2026-04-10
+image: /images/uploads/cal.jpg
 excerpt: tatlıyaztatlıyaztatlıyaztatlıyaz.
 ---
 
