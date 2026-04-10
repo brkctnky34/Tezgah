@@ -59,6 +59,45 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* ── DÜKKAN ── */}
+      <section className="border-t border-b" style={{ borderColor: "var(--border)" }}>
+        <a
+          href="https://645dukkan.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block max-w-5xl mx-auto px-6 py-8"
+          style={{ textDecoration: "none" }}
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-6">
+              <span className="type-label">Dükkan</span>
+              <span
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "17px",
+                  fontStyle: "italic",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                Kitaplar, baskılar ve kolektif ürünleri
+              </span>
+            </div>
+            <span
+              className="shrink-0 transition-transform group-hover:translate-x-1"
+              style={{
+                fontFamily: "var(--font-ui)",
+                fontSize: "11px",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--text-muted)",
+              }}
+            >
+              645dukkan.com →
+            </span>
+          </div>
+        </a>
+      </section>
     </div>
   );
 }
