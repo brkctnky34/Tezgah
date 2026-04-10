@@ -81,9 +81,14 @@ export default function IletisimPage() {
 
           <div>
             <p className="type-label mb-2">Instagram</p>
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", color: "var(--text)" }}>
+            <a
+              href={`https://instagram.com/${d.instagram}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: "var(--font-ui)", fontSize: "14px", color: "var(--text)", textDecoration: "none" }}
+            >
               @{d.instagram}
-            </p>
+            </a>
           </div>
         </div>
 
