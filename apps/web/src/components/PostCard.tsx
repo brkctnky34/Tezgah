@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Post, formatDate } from "@/lib/posts";
+import { Post, formatDate } from "@/lib/types";
 
 export default function PostCard({ post }: { post: Post }) {
   const wrapRef = useRef<HTMLDivElement>(null);

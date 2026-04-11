@@ -2,23 +2,12 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
-
-export type PostType = "deneme" | "siir" | "hikaye" | "soylesi" | "ceviri";
-
-export interface Post {
-  slug: string;
-  title: string;
-  author: string;
-  type: PostType;
-  date: string;
-  excerpt: string;
-  image?: string;
-  bodyHtml: string;
-}
+export type { PostType, Post } from "./types";
+export { formatDate, typeLabels } from "./types";
+import type { Post } from "./types";
 
 const postsDir = path.join(process.cwd(), "content", "posts");
 
-/** Türkçe ve diğer özel karakterleri ASCII slug'a çevirir */
 function normalizeSlug(filename: string): string {
   return filename
     .toLowerCase()
@@ -38,10 +27,7 @@ export function getAllPosts(): Post[] {
   return fs
     .readdirSync(postsDir)
     .filter((f) => f.endsWith(".md"))
-    .map((f) => {
-      const rawSlug = f.replace(/\.md$/, "");
-      return getPostByFilename(rawSlug);
-    })
+    .map((f) => getPostByFilename(f.replace(/\.md$/, "")))
     .filter(Boolean)
     .sort(
       (a, b) => new Date(b!.date).getTime() - new Date(a!.date).getTime()
@@ -53,9 +39,8 @@ function getPostByFilename(rawSlug: string): Post | null {
   if (!fs.existsSync(fullPath)) return null;
   const { data, content } = matter(fs.readFileSync(fullPath, "utf8"));
   marked.use({ breaks: true });
-  const slug = normalizeSlug(rawSlug);
   return {
-    slug,
+    slug: normalizeSlug(rawSlug),
     title: data.title ?? "",
     author: data.author ?? "",
     type: data.type ?? "deneme",
@@ -68,7 +53,6 @@ function getPostByFilename(rawSlug: string): Post | null {
 
 export function getPost(slug: string): Post | null {
   if (!fs.existsSync(postsDir)) return null;
-  // Normalize edilmiş slug ile eşleşen dosyayı bul
   const files = fs.readdirSync(postsDir).filter((f) => f.endsWith(".md"));
   const match = files.find(
     (f) => normalizeSlug(f.replace(/\.md$/, "")) === slug
@@ -76,19 +60,3 @@ export function getPost(slug: string): Post | null {
   if (!match) return null;
   return getPostByFilename(match.replace(/\.md$/, ""));
 }
-
-export function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("tr-TR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
-export const typeLabels: Record<PostType, string> = {
-  deneme: "Deneme",
-  siir: "Şiir",
-  hikaye: "Hikaye",
-  soylesi: "Söyleşi",
-  ceviri: "Çeviri",
-};
