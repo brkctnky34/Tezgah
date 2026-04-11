@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Post, typeLabels, formatDate } from "@/lib/posts";
+import { Post, formatDate } from "@/lib/posts";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
     <Link
       href={`/metin/${post.slug}`}
-      className="group flex flex-col border transition-all duration-300 hover:shadow-md"
+      className="post-card-underground group flex flex-col border transition-all duration-300 hover:shadow-md"
       style={{ borderColor: "var(--border)", backgroundColor: "var(--surface)" }}
     >
       {/* Cover image */}
@@ -24,9 +24,6 @@ export default function PostCard({ post }: { post: Post }) {
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-6">
-        {/* Type label */}
-        <p className="type-label mb-4">{typeLabels[post.type]}</p>
-
         {/* Title */}
         <h2
           className="leading-snug mb-3 flex-1 transition-colors duration-200 group-hover:text-[#c8001e]"

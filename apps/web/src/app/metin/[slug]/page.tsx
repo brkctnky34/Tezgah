@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPosts, getPost, typeLabels, formatDate } from "@/lib/posts";
+import { getAllPosts, getPost, formatDate } from "@/lib/posts";
 
 interface Props { params: { slug: string } }
 
@@ -53,9 +53,8 @@ export default function MetinPage({ params }: Props) {
         <div className="max-w-2xl mx-auto px-5 sm:px-6 pt-10 pb-10">
           <Link href="/" className="nav-link mb-8 inline-block">← Ana Sayfa</Link>
 
-          <div className="mt-6 mb-5 flex flex-wrap items-center gap-3">
-            <span className="type-label">{typeLabels[post.type]}</span>
-            <span style={{ color: "var(--border)" }}>·</span>
+          <div className="mt-6 mb-5">
+            <div className="article-rule" />
             <span className="meta-text">{formatDate(post.date)}</span>
           </div>
 
