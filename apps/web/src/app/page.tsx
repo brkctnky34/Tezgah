@@ -48,12 +48,6 @@ export default function HomePage() {
 
       {/* ── GRID ── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
-        <div className="flex items-center justify-between mb-8">
-          <p className="section-title">Tüm Metinler</p>
-          <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "var(--text-muted)", letterSpacing: "0.06em" }}>
-            {posts.length} metin
-          </p>
-        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {posts.map((post) => (
             <PostCard key={post.slug} post={post} />
