@@ -25,7 +25,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="mx-auto mb-6" style={{ width: "32px", height: "2px", backgroundColor: "var(--accent)" }} />
           <h1
-            className="uppercase"
+            className="glitch-title uppercase"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2.2rem, 6vw, 4rem)",

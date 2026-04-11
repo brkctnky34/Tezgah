@@ -170,6 +170,40 @@
   overflow: hidden;
 }
 
+/* ── GLITCH ── */
+@keyframes glitch {
+  0%, 90%, 100% {
+    text-shadow: none;
+    clip-path: none;
+    transform: none;
+  }
+  91% {
+    text-shadow: -2px 0 #c8001e, 2px 0 #0a7aff;
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    transform: translateX(-1px);
+  }
+  92% {
+    text-shadow: 2px 0 #c8001e, -2px 0 #0a7aff;
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    transform: translateX(2px);
+  }
+  93% {
+    text-shadow: -1px 0 #c8001e, 1px 0 #0a7aff;
+    clip-path: polygon(0 0%, 100% 0%, 100% 15%, 0 15%);
+    transform: translateX(0);
+  }
+  94%, 99% {
+    text-shadow: none;
+    clip-path: none;
+    transform: none;
+  }
+}
+
+.glitch-title {
+  animation: glitch 8s infinite;
+  animation-timing-function: steps(1);
+}
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar {
   width: 6px;
