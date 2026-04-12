@@ -12,9 +12,9 @@
   --surface: #f0ece2;
   --border: #d4cfc6;
   --border-hover: #b8b3a8;
-  --text: #1a1a1a;
-  --text-secondary: #555555;
-  --text-muted: #999999;
+  --text: #111111;
+  --text-secondary: #3a3a3a;
+  --text-muted: #6e6e6e;
   --accent: #c8001e;
   --accent-hover: #a00018;
 }
@@ -174,6 +174,11 @@
 
 /* ── MOBILE READING ── */
 @media (max-width: 640px) {
+  /* Grain dokuyu mobilde hafiflet — kontrast kazanımı */
+  body::before {
+    opacity: 0.10;
+  }
+
   .prose-kh p {
     font-size: 17px;
     line-height: 1.85;
@@ -192,6 +197,21 @@
   .glitch-title {
     font-weight: 400 !important;
     letter-spacing: 0.15em !important;
+  }
+
+  /* Meta ve ikincil metinler mobilden okunabilsin */
+  .meta-text {
+    color: #5a5a5a;
+    font-weight: 500;
+  }
+
+  .section-title {
+    color: #4a4a4a;
+    font-weight: 600;
+  }
+
+  .nav-link {
+    color: #4a4a4a;
   }
 }
 
