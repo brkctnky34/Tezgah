@@ -7,11 +7,11 @@
   --font-body: "EB Garamond", "Georgia", serif;
   --font-ui: "Inter", system-ui, sans-serif;
 
-  --bg: #ffffff;
-  --bg-warm: #faf8f5;
-  --surface: #ffffff;
-  --border: #e0ddd8;
-  --border-hover: #c0bdb8;
+  --bg: #ede9df;
+  --bg-warm: #e8e3d8;
+  --surface: #f0ece2;
+  --border: #d4cfc6;
+  --border-hover: #b8b3a8;
   --text: #1a1a1a;
   --text-secondary: #555555;
   --text-muted: #999999;
