@@ -75,7 +75,7 @@ export default function HomePage() {
                   color: "var(--text-secondary)",
                 }}
               >
-                @{settings.instagram}
+                buradayım
               </span>
             </div>
             <span
@@ -114,7 +114,7 @@ export default function HomePage() {
                   color: "var(--text-secondary)",
                 }}
               >
-                Kitaplar, baskılar ve kolektif ürünleri
+                kıyakmış baya
               </span>
             </div>
             <span
