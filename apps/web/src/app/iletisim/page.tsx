@@ -4,7 +4,21 @@ import path from "path";
 
 export const metadata: Metadata = {
   title: "İletişim",
-  description: "Kaspar Hauser dergisi ile iletişime geçin.",
+  description: "Kaspar Hauser dergisi ile iletişime geçin. Yazı göndermek, iş birliği teklif etmek için.",
+  alternates: { canonical: "/iletisim/" },
+  openGraph: {
+    title: "İletişim — Kaspar Hauser",
+    description: "Kaspar Hauser dergisi ile iletişime geçin.",
+    type: "website",
+    locale: "tr_TR",
+    siteName: "Kaspar Hauser",
+    url: "/iletisim/",
+  },
+  twitter: {
+    card: "summary",
+    title: "İletişim — Kaspar Hauser",
+    description: "Kaspar Hauser dergisi ile iletişime geçin.",
+  },
 };
 
 interface IletisimData {

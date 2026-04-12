@@ -6,6 +6,20 @@ export const metadata: Metadata = {
   title: "Hakkında",
   description:
     "Kaspar Hauser ve 6:45 yayınları hakkında. Bağımsız bir edebiyat ve kültür platformu.",
+  alternates: { canonical: "/hakkinda/" },
+  openGraph: {
+    title: "Hakkında — Kaspar Hauser",
+    description: "Kaspar Hauser ve 6:45 yayınları hakkında. Bağımsız bir edebiyat ve kültür platformu.",
+    type: "website",
+    locale: "tr_TR",
+    siteName: "Kaspar Hauser",
+    url: "/hakkinda/",
+  },
+  twitter: {
+    card: "summary",
+    title: "Hakkında — Kaspar Hauser",
+    description: "Kaspar Hauser ve 6:45 yayınları hakkında.",
+  },
 };
 
 interface HakkindaData {

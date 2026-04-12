@@ -41,13 +41,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     siteName: "Kaspar Hauser",
+    url: BASE_URL,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Kaspar Hauser — 6:45 yayınları",
     description,
   },
-  alternates: { canonical: BASE_URL },
+  alternates: { canonical: "/" },
 };
 
 const jsonLd = {

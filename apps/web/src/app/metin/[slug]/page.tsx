@@ -13,10 +13,28 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(params.slug);
   if (!post) return {};
+  const url = `/metin/${params.slug}/`;
   return {
     title: post.title,
     description: post.excerpt,
-    openGraph: post.image ? { images: [{ url: post.image }] } : undefined,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${post.title} — Kaspar Hauser`,
+      description: post.excerpt,
+      type: "article",
+      locale: "tr_TR",
+      siteName: "Kaspar Hauser",
+      url,
+      publishedTime: post.date,
+      authors: [post.author],
+      ...(post.image ? { images: [{ url: post.image, alt: post.title }] } : {}),
+    },
+    twitter: {
+      card: post.image ? "summary_large_image" : "summary",
+      title: `${post.title} — Kaspar Hauser`,
+      description: post.excerpt,
+      ...(post.image ? { images: [post.image] } : {}),
+    },
   };
 }
 
