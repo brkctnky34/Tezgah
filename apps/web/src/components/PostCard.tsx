@@ -12,14 +12,14 @@ export default function PostCard({ post }: { post: Post }) {
       {/* Cover image */}
       <div
         className="relative w-full overflow-hidden"
-        style={{ aspectRatio: "3/2", backgroundColor: "var(--border)" }}
+        style={{ aspectRatio: "4/5", backgroundColor: "var(--border)" }}
       >
         {post.image ? (
           <Image
             src={post.image}
             alt={post.title}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-103"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
@@ -34,34 +34,23 @@ export default function PostCard({ post }: { post: Post }) {
         )}
       </div>
 
-      {/* Text — centered, below image */}
-      <div className="pt-5 pb-2 text-center px-2">
+      {/* Text — left aligned */}
+      <div className="pt-4 pb-2">
         <h2
-          className="mb-2 transition-colors duration-200 group-hover:text-[#c8001e]"
+          className="mb-1 transition-colors duration-200 group-hover:text-[#c8001e]"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(18px, 2.2vw, 22px)",
+            fontSize: "clamp(16px, 2vw, 19px)",
             fontWeight: 400,
-            lineHeight: 1.25,
+            lineHeight: 1.3,
             color: "var(--text)",
           }}
         >
-          {post.title}
+          '{post.title}'
         </h2>
 
-        <p className="meta-text mb-3">{post.author} · {formatDate(post.date)} · {post.readingTime} dk</p>
-
-        <p
-          className="line-clamp-3"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "14px",
-            fontStyle: "italic",
-            lineHeight: 1.65,
-            color: "var(--text-secondary)",
-          }}
-        >
-          {post.excerpt}
+        <p className="meta-text">
+          {post.author} · {formatDate(post.date)} · {post.readingTime} dk
         </p>
       </div>
     </Link>
