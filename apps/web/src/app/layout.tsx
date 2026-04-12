@@ -73,6 +73,7 @@ export default function RootLayout({
     <html lang="tr">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate" type="application/rss+xml" title="Kaspar Hauser" href="/rss.xml" />
         {/* Font preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

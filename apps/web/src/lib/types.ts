@@ -9,6 +9,7 @@ export interface Post {
   excerpt: string;
   image?: string;
   bodyHtml: string;
+  readingTime: number;
 }
 
 export function formatDate(dateStr: string): string {

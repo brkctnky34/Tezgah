@@ -183,6 +183,16 @@
     font-size: 18px !important;
     line-height: 1.9 !important;
   }
+
+  /* Cormorant Garamond 300 weight mobilde çok ince — 400'e çek */
+  h1, h2, h3 {
+    font-weight: 400 !important;
+  }
+
+  .glitch-title {
+    font-weight: 400 !important;
+    letter-spacing: 0.15em !important;
+  }
 }
 
 /* ── LINE CLAMP ── */

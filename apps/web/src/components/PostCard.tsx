@@ -49,7 +49,7 @@ export default function PostCard({ post }: { post: Post }) {
           {post.title}
         </h2>
 
-        <p className="meta-text mb-3">{post.author} · {formatDate(post.date)}</p>
+        <p className="meta-text mb-3">{post.author} · {formatDate(post.date)} · {post.readingTime} dk</p>
 
         <p
           className="line-clamp-3"

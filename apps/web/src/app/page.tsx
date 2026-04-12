@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import PostCard from "@/components/PostCard";
+import PostGrid from "@/components/PostGrid";
 import { getAllPosts } from "@/lib/posts";
 
 interface Settings {
@@ -48,11 +48,7 @@ export default function HomePage() {
 
       {/* ── GRID ── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
-          {posts.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
+        <PostGrid posts={posts} />
       </section>
 
       {/* ── INSTAGRAM ── */}

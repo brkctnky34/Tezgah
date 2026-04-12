@@ -22,6 +22,11 @@ function normalizeSlug(filename: string): string {
     .replace(/^-|-$/g, "");
 }
 
+function calcReadingTime(text: string): number {
+  const words = text.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 220));
+}
+
 export function getAllPosts(): Post[] {
   if (!fs.existsSync(postsDir)) return [];
   return fs
@@ -48,6 +53,7 @@ function getPostByFilename(rawSlug: string): Post | null {
     excerpt: data.excerpt ?? "",
     image: data.image ?? undefined,
     bodyHtml: marked(content) as string,
+    readingTime: calcReadingTime(content),
   };
 }
 
