@@ -1,90 +1,69 @@
-"use client";
-
-import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Post, formatDate } from "@/lib/types";
 
 export default function PostCard({ post }: { post: Post }) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const [style, setStyle] = useState<React.CSSProperties>({});
-
-  const handleMouseEnter = () => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const vpCX = window.innerWidth / 2;
-    const vpCY = window.innerHeight / 2;
-    const elCX = rect.left + rect.width / 2;
-    const elCY = rect.top + rect.height / 2;
-    const tx = vpCX - elCX;
-    const ty = vpCY - elCY;
-    setStyle({
-      transform: `translate(${tx}px, ${ty}px) scale(1.35)`,
-      zIndex: 50,
-      boxShadow: "0 32px 80px rgba(0,0,0,0.18)",
-    });
-  };
-
-  const handleMouseLeave = () => setStyle({});
-
   return (
-    <div
-      ref={wrapRef}
-      style={{ position: "relative", transition: "transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease, z-index 0s", ...style }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+    <Link
+      href={`/metin/${post.slug}`}
+      style={{ textDecoration: "none", display: "flex", flexDirection: "column" }}
+      className="group"
     >
-      <Link
-        href={`/metin/${post.slug}`}
-        className="post-card-underground group flex flex-col border"
-        style={{ borderColor: "var(--border)", backgroundColor: "var(--surface)", textDecoration: "none", display: "flex", flexDirection: "column" }}
+      {/* Cover image */}
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ aspectRatio: "3/2", backgroundColor: "var(--border)" }}
       >
-        {post.image && (
-          <div className="relative w-full overflow-hidden" style={{ aspectRatio: "3/2" }}>
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-103"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ backgroundColor: "var(--bg-warm)" }}
+          >
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 300, color: "var(--border-hover)", fontStyle: "italic" }}>
+              kh
+            </span>
           </div>
         )}
+      </div>
 
-        <div className="flex flex-col flex-1 p-6">
-          <h2
-            className="leading-snug mb-3 flex-1"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "21px",
-              fontWeight: 400,
-              color: "var(--text)",
-            }}
-          >
-            {post.title}
-          </h2>
+      {/* Text — centered, below image */}
+      <div className="pt-5 pb-2 text-center px-2">
+        <h2
+          className="mb-2 transition-colors duration-200 group-hover:text-[#c8001e]"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(18px, 2.2vw, 22px)",
+            fontWeight: 400,
+            lineHeight: 1.25,
+            color: "var(--text)",
+          }}
+        >
+          {post.title}
+        </h2>
 
-          <p
-            className="line-clamp-3 mb-5"
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "14px",
-              lineHeight: 1.7,
-              color: "var(--text-secondary)",
-            }}
-          >
-            {post.excerpt}
-          </p>
+        <p className="meta-text mb-3">{post.author} · {formatDate(post.date)}</p>
 
-          <div className="flex justify-between items-center pt-4" style={{ borderTop: "1px solid var(--border)" }}>
-            <span style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "var(--text-secondary)", letterSpacing: "0.04em" }}>
-              {post.author}
-            </span>
-            <span className="meta-text">{formatDate(post.date)}</span>
-          </div>
-        </div>
-      </Link>
-    </div>
+        <p
+          className="line-clamp-3"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "14px",
+            fontStyle: "italic",
+            lineHeight: 1.65,
+            color: "var(--text-secondary)",
+          }}
+        >
+          {post.excerpt}
+        </p>
+      </div>
+    </Link>
   );
 }
